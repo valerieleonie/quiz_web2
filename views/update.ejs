@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form method="post" action="/update/<%= databuku.id %>">
+        <div>
+            <label>Buku:</label>
+            <input type="text" name="buku" value="<%= databuku.buku %>"/>
+        </div>
+        <div>
+            <label>ISBN:</label>
+            <input type="text" name="isbn" value="<%= databuku.isbn %>" />
+        </div>
+        <div><input type="submit" value="Update"></div>
+
+    </form>
+</body>
+</html>

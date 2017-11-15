@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .success { color: green; }
+        .warning { color: orange; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <form method="post" action="/">
+        <div>
+            <label>Buku:</label>
+            <input type="text" name="buku" />
+        </div>
+        <div>
+            <label>ISBN:</label>
+            <input type="text" name="isbn" />
+        </div>
+        <div><input type="submit" value="Tambah"></div>
+    </form>
+    <% if (flash.length > 0) { %>
+        <ul>
+            <% while (m = flash.pop()) { %>
+                <li class="<%= m.class %>"><%= m.message %></li>
+            <% } %>
+        </ul>
+    <% } %>
+    <form method="get" action="/saring">
+        <input type="text" name="saring"> <input type="submit" value="Filter">
+    </form>
+    <table>
+        <tr>
+            <td>Buku</td>
+            <td>ISBN</td>
+            <td>Action</td>
+        </tr>
+        <% for (i in databuku) { %>
+            <tr>
+            <td><%= databuku[i].buku %></td>
+            <td><%= databuku[i].isbn %></td>
+            <td><a href="/update/<%= databuku[i].id %>">Edit</a>
+                <a href="/delete/<%= databuku[i].id %>">Delete</a></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
